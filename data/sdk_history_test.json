@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Help me plan JavaScript practice"
+  },
+  {
+    "role": "assistant",
+    "content": "Offline mode: I received your message.\n\nUser context:\nSaved preferences:\n- language: JavaScript\nStudy tasks:\n- [pending] ללמוד JavaScript\n\nNo real language model was called."
+  }
+]

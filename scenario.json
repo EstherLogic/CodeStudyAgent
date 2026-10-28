@@ -1,0 +1,98 @@
+
+{
+  "scenario_name": "CodeStudyAgent persistence and tool-use evaluation",
+  "description": "Two sessions with a fresh agent instance in session 2. Tests task management, memory, external information requests, and contradictory preferences.",
+  "sessions": [
+    {
+      "session_id": "session_1",
+      "fresh_instance": true,
+      "requests": [
+        {
+          "id": 1,
+          "message": "I am learning JavaScript. Please remember that I prefer explanations in small steps.",
+          "expected_actions": [
+            "save_preference"
+          ],
+          "expected_preference": {
+            "key": "explanation_style",
+            "value": "small steps"
+          }
+        },
+        {
+          "id": 2,
+          "message": "Create a task called Practice JavaScript classes.",
+          "expected_actions": [
+            "add_task"
+          ],
+          "expected_task_title": "Practice JavaScript classes"
+        },
+        {
+          "id": 3,
+          "message": "Show me my current study tasks.",
+          "expected_actions": [
+            "list_tasks"
+          ]
+        },
+        {
+          "id": 4,
+          "message": "Find the official Python documentation about classes and give me its URL.",
+          "expected_actions": [
+            "external_search"
+          ],
+          "expected_result": "A verified documentation URL or an explicit statement that external search is unavailable."
+        }
+      ]
+    },
+    {
+      "session_id": "session_2",
+      "fresh_instance": true,
+      "restart_required": true,
+      "requests": [
+        {
+          "id": 5,
+          "message": "What explanation style do I prefer?",
+          "expected_actions": [
+            "get_preferences"
+          ],
+          "expected_preference": {
+            "key": "explanation_style",
+            "value": "small steps"
+          }
+        },
+        {
+          "id": 6,
+          "message": "Please list my study tasks again.",
+          "expected_actions": [
+            "list_tasks"
+          ],
+          "expected_task_title": "Practice JavaScript classes"
+        },
+        {
+          "id": 7,
+          "message": "Mark Practice JavaScript classes as completed.",
+          "expected_actions": [
+            "complete_task"
+          ],
+          "expected_task_title": "Practice JavaScript classes"
+        },
+        {
+          "id": 8,
+          "message": "I know I asked for small-step explanations, but for this request only, give me a concise summary of JavaScript classes.",
+          "expected_actions": [
+            "use_saved_preference",
+            "handle_temporary_contradiction"
+          ],
+          "expected_result": "Give a concise answer for this request without permanently changing the saved preference."
+        }
+      ]
+    }
+  ],
+  "evaluation_checks": [
+    "Preferences persist across fresh agent instances.",
+    "Tasks persist across fresh agent instances.",
+    "Tools are invoked for task operations.",
+    "The external information request is handled honestly.",
+    "A temporary contradictory request does not overwrite the saved preference.",
+    "Each request records its actions and outcome."
+  ]
+}

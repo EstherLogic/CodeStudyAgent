@@ -1,0 +1,126 @@
+{
+  "scenario_name": "CodeStudyAgent persistence and tool-use evaluation",
+  "mode": "offline_deterministic_simulation",
+  "real_model_calls": 0,
+  "sessions": [
+    {
+      "session_id": "session_1",
+      "fresh_instance": true,
+      "requests": [
+        {
+          "request_id": 1,
+          "actions": [
+            "save_preference"
+          ],
+          "result": {
+            "key": "explanation_style",
+            "value": "small steps",
+            "updated_at": "2026-10-28T10:33:24.569281+00:00"
+          }
+        },
+        {
+          "request_id": 2,
+          "actions": [
+            "add_task"
+          ],
+          "result": {
+            "title": "Practice JavaScript classes",
+            "description": "",
+            "completed": false,
+            "task_id": "1ee5d997-39ed-4dbd-b77b-71f0b53a1d74",
+            "created_at": "2026-10-28T10:33:24.614369+00:00"
+          }
+        },
+        {
+          "request_id": 3,
+          "actions": [
+            "list_tasks"
+          ],
+          "result": [
+            {
+              "title": "Practice JavaScript classes",
+              "description": "",
+              "completed": false,
+              "task_id": "1ee5d997-39ed-4dbd-b77b-71f0b53a1d74",
+              "created_at": "2026-10-28T10:33:24.614369+00:00"
+            }
+          ]
+        },
+        {
+          "request_id": 4,
+          "actions": [
+            "external_search"
+          ],
+          "result": {
+            "status": "unavailable",
+            "message": "External search is not implemented; no URL was fabricated."
+          }
+        }
+      ]
+    },
+    {
+      "session_id": "session_2",
+      "fresh_instance": true,
+      "requests": [
+        {
+          "request_id": 5,
+          "actions": [
+            "get_preferences"
+          ],
+          "result": {
+            "key": "explanation_style",
+            "value": "small steps",
+            "updated_at": "2026-10-28T10:33:24.569281+00:00"
+          }
+        },
+        {
+          "request_id": 6,
+          "actions": [
+            "list_tasks"
+          ],
+          "result": [
+            {
+              "title": "Practice JavaScript classes",
+              "description": "",
+              "completed": false,
+              "task_id": "1ee5d997-39ed-4dbd-b77b-71f0b53a1d74",
+              "created_at": "2026-10-28T10:33:24.614369+00:00"
+            }
+          ]
+        },
+        {
+          "request_id": 7,
+          "actions": [
+            "complete_task"
+          ],
+          "result": {
+            "title": "Practice JavaScript classes",
+            "description": "",
+            "completed": true,
+            "task_id": "1ee5d997-39ed-4dbd-b77b-71f0b53a1d74",
+            "created_at": "2026-10-28T10:33:24.614369+00:00"
+          }
+        },
+        {
+          "request_id": 8,
+          "actions": [
+            "use_saved_preference",
+            "handle_temporary_contradiction"
+          ],
+          "result": {
+            "status": "temporary_request",
+            "saved_preference_unchanged": true
+          }
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "preference_persisted_across_sessions": true,
+    "task_persisted_across_sessions": true,
+    "task_completed": true,
+    "temporary_request_preserved_preference": true,
+    "external_search_reported_unavailable": true
+  },
+  "all_checks_passed": true
+}

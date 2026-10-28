@@ -1,0 +1,10 @@
+[
+  {
+    "role": "user",
+    "content": "Help me learn JavaScript"
+  },
+  {
+    "role": "assistant",
+    "content": "Let us practice classes"
+  }
+]
